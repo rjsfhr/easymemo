@@ -28,7 +28,7 @@
 
   <?php
     if(isset($_GET['id'])){
-        echo file_get_contents("data/".$_GET['id']);
+        echo file_get_contents($_GET['id']);
     }
   ?>
 
