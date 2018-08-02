@@ -10,12 +10,16 @@
 <body>
   <h1><a href="index.php">Easy Memo</a></h1>
   <ol>
-    <li><a href="index.php?id=1">컴퓨터 공부</a></li>
-    <li><a href="index.php?id=2">음악</a></li>
-    <li><a href="index.php?id=3">유용한 정보</a></li>
-    <li><a href="index.php?id=4">메모앱 개발 관련</a></li>
+    <?php
+      $list = scandir("./data");
+      $i=0;
+      while($i<count($list)){
+        echo "<li><a href='index.php?id=$list[$i]'>$list[$i]</a></li>";
+        $i=$i+1;
+      }
+    ?>
   </ol>
-  
+
   <h2>이 메모의 장점</h2>
   <ul>
     <li><a href="merits.html">쉬운 접근</a></li>
@@ -28,7 +32,7 @@
 
   <?php
     if(isset($_GET['id'])){
-        echo file_get_contents("link".$_GET['id']."html");
+        echo file_get_contents($_GET['id']);
     }
   ?>
 
